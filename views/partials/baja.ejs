@@ -1,0 +1,14 @@
+<h2>Baja</h2>
+<form id="formA" action="/baja" method="POST" onsubmit="return confirmDelete()">
+  <div class="form-floating">
+    <input type="text" class="form-control" id="album" name="album" placeholder="Album">
+    <label for="album">Album</label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Dar de baja el álbum</button>
+</form>
+
+<script>
+  function confirmDelete() {
+    return confirm('¿Estás seguro de que deseas eliminar este álbum?');
+  }
+</script>
