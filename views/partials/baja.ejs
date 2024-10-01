@@ -1,10 +1,11 @@
 <h2>Baja</h2>
-<form id="formA" action="/baja" method="POST" onsubmit="return confirmDelete()">
+<form id="formA" action="/baja/<%= album.id %>" method="POST" onsubmit="return confirmDelete()">
   <div class="form-floating">
-    <input type="text" class="form-control" id="album" name="album" placeholder="Album">
+    <input type="text" class="form-control" id="album" name="album" value="<%= album.album %>" placeholder="Album" disabled>
     <label for="album">Album</label>
   </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit">Dar de baja el álbum</button>
+  <input type="hidden" name="id" value="<%= album.id %>"> <!-- Campo oculto con el ID -->
+  <button class="w-100 btn btn-lg btn-danger" type="submit">Dar de baja el álbum</button>
 </form>
 
 <script>

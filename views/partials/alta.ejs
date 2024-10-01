@@ -1,16 +1,20 @@
 <h2>Alta</h2>
-<form id="formA" action="/alta" method="POST">
+<form id="formA" action="/alta" method="POST" enctype="multipart/form-data">
   <div class="form-floating">
-    <input type="text" class="form-control" id="album" name="album" placeholder="Album">
+    <input type="text" class="form-control" id="album" name="album" placeholder="Album" required>
     <label for="album">Album</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="genre" name="genre" placeholder="Genero">
-    <label for="genre">Genero</label>
+    <input type="text" class="form-control" id="genre" name="genre" placeholder="Género" required>
+    <label for="genre">Género</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="year" name="year" placeholder="Año">
+    <input type="text" class="form-control" id="year" name="year" placeholder="Año" required>
     <label for="year">Año</label>
   </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit">Cargar Album</button>
+  <div class="form-floating">
+    <input type="file" class="form-control" id="song" name="song" accept="audio/*" required>
+    <label for="song">Subir Canción</label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Cargar Álbum</button>
 </form>

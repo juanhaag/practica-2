@@ -5,11 +5,9 @@ const conexion = require('../database/db');
 // Procedimiento para registrarnos
 exports.register = async (req, res) => {
     try {
-        const { fullname, username, password } = req.body;
+        const { fullname, username, password,email } = req.body;
 
-        // Validar que los campos no sean undefined
-        console.log(req.body);
-        if (!fullname || !username || !password) {
+        if (!fullname || !username || !password || !email) {
             return res.render('register', {
                 alert: true,
                 alertTitle: "Advertencia",
@@ -22,7 +20,7 @@ exports.register = async (req, res) => {
         }
 
         const passHash = await bcryptjs.hash(password, 8);
-        conexion.query('INSERT INTO users SET ?', { username, fullname, password: passHash }, (error, results) => {
+        conexion.query('INSERT INTO users SET ?', { username, fullname, password: passHash,email }, (error, results) => {
             if (error) {
                 console.log(error);
                 return res.render('register', {

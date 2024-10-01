@@ -62,12 +62,49 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h2>Dashboard</h2>
-            <h2>Bienvenido:
-              <% if (user) { %>
-                <span class="badge bg-success"><%= user.name %></span>
-              <% } %>
-            </h2>
-          </div>
+          </div> <% if (isHome) { %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Álbum</th>
+                  <th scope="col">Género</th>
+                  <th scope="col">Año</th>
+                  <th scope="col">Escuchar</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (albums && albums.length > 0) { %>
+                  <% albums.forEach((album, index) => { %>
+                    <tr>
+                      <th scope="row"><%= index + 1 %></th>
+                      <td><%= album.album %></td>
+                      <td><%= album.genre %></td>
+                      <td><%= album.year %></td>
+                      <td>
+                        <audio controls>
+                          <source src="<%= album.song %>" type="audio/mpeg">
+                          Tu navegador no soporta el audio.
+                        </audio>
+                      </td>
+                      <td>
+                        <a href="/modificacion/<%= album.id %>" class="btn btn-warning btn-sm">Modificar</a>
+                        <form action="/baja/<%= album.id %>" method="POST" style="display:inline;">
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete()">Eliminar</button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }) %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="6">No hay álbumes disponibles</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>   
+            <% } %>
+        
           <% if (!isHome) { %>
             <%- include(partial) %>
           <% } %>

@@ -32,5 +32,5 @@ app.use(function(req, res, next) {
 
 
 app.listen(3000, ()=>{
-    console.log('SERVER UP runnung in http://localhost:3000')
+    console.log('URL SERVER: http://localhost:3000')
 })
