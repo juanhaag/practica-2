@@ -1,16 +1,17 @@
 <h2>Modificación</h2>
-<form id="formA" action="/modificacion" method="POST">
+<form id="formA" action="/modificacion/<%= album.id %>" method="POST">
   <div class="form-floating">
-    <input type="text" class="form-control" id="album" name="album" placeholder="Album">
+    <input type="text" class="form-control" id="album" name="album" value="<%= album.album %>" placeholder="Album" required>
     <label for="album">Album</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="genre" name="genre" placeholder="Género">
+    <input type="text" class="form-control" id="genre" name="genre" value="<%= album.genre %>" placeholder="Género" required>
     <label for="genre">Género</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="year" name="year" placeholder="Año">
+    <input type="number" class="form-control" id="year" name="year" value="<%= album.year %>" placeholder="Año" required>
     <label for="year">Año</label>
   </div>
+  <input type="hidden" name="id" value="<%= album.id %>"> <!-- Campo oculto con el ID -->
   <button class="w-100 btn btn-lg btn-primary" type="submit">Modificar álbum</button>
 </form>
